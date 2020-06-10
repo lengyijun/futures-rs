@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use crate::enter;
 use crate::unpark_mutex::UnparkMutex;
 use futures_core::future::Future;
@@ -10,7 +11,7 @@ use std::fmt;
 use std::io;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::mpsc;
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, SgxMutex as Mutex};
 use std::thread;
 
 /// A general-purpose thread pool for scheduling tasks that poll futures to
@@ -188,7 +189,7 @@ impl ThreadPoolBuilder {
     /// See the other methods on this type for details on the defaults.
     pub fn new() -> Self {
         Self {
-            pool_size: cmp::max(1, num_cpus::get()),
+            pool_size: 1,
             stack_size: 0,
             name_prefix: None,
             after_start: None,
@@ -281,7 +282,7 @@ impl ThreadPoolBuilder {
                 thread_builder = thread_builder.name(format!("{}{}", name_prefix, counter));
             }
             if self.stack_size > 0 {
-                thread_builder = thread_builder.stack_size(self.stack_size);
+                //Fix
             }
             thread_builder.spawn(move || state.work(counter, after_start, before_stop))?;
         }

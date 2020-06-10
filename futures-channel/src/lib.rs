@@ -19,6 +19,14 @@
 
 #![doc(html_root_url = "https://docs.rs/futures-channel/0.3.5")]
 
+#![no_std]
+use std::prelude::v1::*;
+#[macro_use]
+extern crate sgx_tstd as std;
+
+
+
+
 #[cfg(all(feature = "cfg-target-has-atomic", not(feature = "unstable")))]
 compile_error!("The `cfg-target-has-atomic` feature requires the `unstable` feature as an explicit opt-in to unstable features");
 
@@ -40,3 +48,4 @@ cfg_target_has_atomic! {
     #[cfg(feature = "alloc")]
     pub mod oneshot;
 }
+

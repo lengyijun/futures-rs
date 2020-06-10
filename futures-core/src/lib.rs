@@ -13,8 +13,13 @@
 
 #![doc(html_root_url = "https://docs.rs/futures-core/0.3.5")]
 
+#![no_std]
+use std::prelude::v1::*;
+extern crate sgx_tstd as std;
+
 #[cfg(all(feature = "cfg-target-has-atomic", not(feature = "unstable")))]
 compile_error!("The `cfg-target-has-atomic` feature requires the `unstable` feature as an explicit opt-in to unstable features");
+
 
 #[cfg(feature = "alloc")]
 extern crate alloc;

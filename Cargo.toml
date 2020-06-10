@@ -9,11 +9,4 @@ members = [
   "futures-sink",
   "futures-task",
   "futures-util",
-  "futures-test",
-
-  "futures/tests/macro-tests",
-  "futures/tests/macro-reexport",
-
-  "examples/functional",
-  "examples/imperative",
 ]

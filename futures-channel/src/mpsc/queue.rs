@@ -41,6 +41,7 @@
 // NOTE: this implementation is lifted from the standard library and only
 //       slightly modified
 
+use std::prelude::v1::*;
 pub(super) use self::PopResult::*;
 
 use std::thread;

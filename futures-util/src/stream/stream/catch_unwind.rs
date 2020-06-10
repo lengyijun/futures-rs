@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use futures_core::stream::{Stream, FusedStream};
 use futures_core::task::{Context, Poll};
 use pin_project::pin_project;

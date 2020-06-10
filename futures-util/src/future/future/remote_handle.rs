@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use {
     crate::future::{CatchUnwind, FutureExt},
     futures_channel::oneshot::{self, Sender, Receiver},

@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use futures_core::task::{Context, Poll};
 #[cfg(feature = "read-initializer")]
 use futures_io::Initializer;

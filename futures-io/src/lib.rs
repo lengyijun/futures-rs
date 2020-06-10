@@ -21,11 +21,16 @@
 
 #![doc(html_root_url = "https://docs.rs/futures-io/0.3.5")]
 
+#![no_std]
+use std::prelude::v1::*;
+extern crate sgx_tstd as std;
+
 #[cfg(all(feature = "read-initializer", not(feature = "unstable")))]
 compile_error!("The `read-initializer` feature requires the `unstable` feature as an explicit opt-in to unstable features");
 
 #[cfg(feature = "std")]
 mod if_std {
+    use std::prelude::v1::*;
     use std::io;
     use std::ops::DerefMut;
     use std::pin::Pin;

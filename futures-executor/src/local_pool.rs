@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use crate::enter;
 use futures_core::future::Future;
 use futures_core::stream::Stream;
@@ -11,7 +12,7 @@ use std::cell::RefCell;
 use std::ops::{Deref, DerefMut};
 use std::rc::{Rc, Weak};
 use std::sync::{Arc, atomic::{AtomicBool, Ordering}};
-use std::thread::{self, Thread};
+use std::thread::{self, SgxThread as Thread};
 
 /// A single-threaded task pool for polling futures to completion.
 ///

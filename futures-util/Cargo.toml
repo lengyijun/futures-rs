@@ -33,24 +33,26 @@ read-initializer = ["io", "futures-io/read-initializer", "futures-io/unstable"]
 write-all-vectored = ["io"]
 
 [dependencies]
-futures-core = { path = "../futures-core", version = "0.3.5", default-features = false }
-futures-task = { path = "../futures-task", version = "0.3.5", default-features = false }
-futures-channel = { path = "../futures-channel", version = "0.3.5", default-features = false, features = ["std"], optional = true }
-futures-io = { path = "../futures-io", version = "0.3.5", default-features = false, features = ["std"], optional = true }
-futures-sink = { path = "../futures-sink", version = "0.3.5", default-features = false, optional = true }
-futures-macro = { path = "../futures-macro", version = "0.3.5", default-features = false, optional = true }
+futures-core = { path = "../futures-core",  default-features = false }
+futures-task = { path = "../futures-task",  default-features = false }
+futures-channel = { path = "../futures-channel",  default-features = false, features = ["std"], optional = true }
+futures-io = { path = "../futures-io",  default-features = false, features = ["std"], optional = true }
+futures-sink = { path = "../futures-sink",  default-features = false, optional = true }
+futures-macro = { path = "../futures-macro", default-features = false, optional = true }
 proc-macro-hack = { version = "0.5.9", optional = true }
 proc-macro-nested = { version = "0.1.2", optional = true }
-slab = { version = "0.4.2", optional = true }
-memchr = { version = "2.2", optional = true }
+slab = { git = "https://github.com/mesalock-linux/slab-sgx", branch = "master" ,optional=true}
+memchr = { git = "https://github.com/mesalock-linux/rust-memchr-sgx", branch = "master" ,optional=true}
 futures_01 = { version = "0.1.25", optional = true, package = "futures" }
 tokio-io = { version = "0.1.9", optional = true }
 pin-utils = "0.1.0"
 pin-project = "0.4.20"
 
+[target.'cfg(not(target_env = "sgx"))'.dependencies]
+sgx_tstd = { version = "1.0", rev = "v1.1.2", git = "https://github.com/apache/teaclave-sgx-sdk.git", features=["untrusted_fs","thread", "backtrace"] }
+
 [dev-dependencies]
 futures = { path = "../futures", version = "0.3.5", features = ["async-await", "thread-pool"] }
-futures-test = { path = "../futures-test", version = "0.3.5" }
 tokio = "0.1.11"
 
 [package.metadata.docs.rs]

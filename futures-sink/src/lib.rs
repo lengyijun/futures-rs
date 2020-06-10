@@ -13,6 +13,10 @@
 
 #![doc(html_root_url = "https://docs.rs/futures-sink/0.3.5")]
 
+#![no_std]
+use std::prelude::v1::*;
+extern crate sgx_tstd as std;
+
 #[cfg(feature = "alloc")]
 extern crate alloc;
 

@@ -14,6 +14,11 @@
 
 #![doc(html_root_url = "https://docs.rs/futures-executor/0.3.5")]
 
+#![no_std]
+use std::prelude::v1::*;
+#[macro_use]
+extern crate sgx_tstd as std;
+
 #[cfg(feature = "std")]
 mod local_pool;
 #[cfg(feature = "std")]

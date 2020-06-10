@@ -23,7 +23,10 @@ unstable = []
 cfg-target-has-atomic = []
 
 [dependencies]
-once_cell = { version = "1.3.1", default-features = false, features = ["std"], optional = true }
+once_cell = {git="https://github.com/lengyijun/once_cell/", default-features = false, features = ["std"], optional = true }
+
+[target.'cfg(not(target_env = "sgx"))'.dependencies]
+sgx_tstd = { version = "1.0", rev = "v1.1.2", git = "https://github.com/apache/teaclave-sgx-sdk.git", features=["untrusted_fs","thread", "backtrace"] }
 
 [dev-dependencies]
 futures = { path = "../futures", version = "0.3.5" }

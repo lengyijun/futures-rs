@@ -30,7 +30,6 @@ futures-util = { path = "../futures-util", version = "0.3.5", default-features =
 [dev-dependencies]
 pin-utils = "0.1.0"
 futures-executor = { path = "../futures-executor", version = "0.3.5", features = ["thread-pool"] }
-futures-test = { path = "../futures-test", version = "0.3.5" }
 tokio = "0.1.11"
 assert_matches = "1.3.0"
 pin-project = "0.4.20"
@@ -53,6 +52,9 @@ cfg-target-has-atomic = ["futures-core/cfg-target-has-atomic", "futures-task/cfg
 bilock = ["futures-util/bilock"]
 read-initializer = ["futures-io/read-initializer", "futures-util/read-initializer"]
 write-all-vectored = ["futures-util/write-all-vectored"]
+
+[target.'cfg(not(target_env = "sgx"))'.dependencies]
+sgx_tstd = { version = "1.0", rev = "v1.1.2", git = "https://github.com/apache/teaclave-sgx-sdk.git", features=["untrusted_fs","thread", "backtrace"] }
 
 [package.metadata.docs.rs]
 all-features = true

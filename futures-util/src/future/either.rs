@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use core::pin::Pin;
 use core::task::{Context, Poll};
 use futures_core::future::{FusedFuture, Future};
@@ -149,13 +150,15 @@ where
 mod if_std {
     use super::*;
 
+    extern crate futures_io;
     use core::pin::Pin;
     use core::task::{Context, Poll};
     #[cfg(feature = "read-initializer")]
     use futures_io::Initializer;
     use futures_io::{
-        AsyncBufRead, AsyncRead, AsyncSeek, AsyncWrite, IoSlice, IoSliceMut, Result, SeekFrom,
+        AsyncBufRead, AsyncRead, AsyncSeek, AsyncWrite, IoSlice, IoSliceMut, SeekFrom
     };
+     use std::io::Result;
 
     impl<A, B> AsyncRead for Either<A, B>
     where

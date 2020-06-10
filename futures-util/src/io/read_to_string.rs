@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use super::read_to_end::read_to_end_internal;
 use futures_core::future::Future;
 use futures_core::task::{Context, Poll};

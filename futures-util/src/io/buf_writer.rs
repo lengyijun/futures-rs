@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use futures_core::task::{Context, Poll};
 use futures_io::{AsyncBufRead, AsyncRead, AsyncSeek, AsyncWrite, IoSlice, SeekFrom};
 use pin_project::pin_project;

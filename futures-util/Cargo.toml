@@ -49,7 +49,7 @@ pin-utils = "0.1.0"
 pin-project = "0.4.20"
 
 [target.'cfg(not(target_env = "sgx"))'.dependencies]
-sgx_tstd = { version = "1.0", rev = "v1.1.2", git = "https://github.com/apache/teaclave-sgx-sdk.git", features=["untrusted_fs","thread", "backtrace"] }
+sgx_tstd = { version = "1.0", rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git", features=["untrusted_fs","thread", "backtrace"] }
 
 [dev-dependencies]
 futures = { path = "../futures", version = "0.3.5", features = ["async-await", "thread-pool"] }
